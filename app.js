@@ -12,7 +12,7 @@ app.get('/health', (req, res) => {
 })
 
 app.get('/version', (req, res) => {
-  res.send('meaningless update to test #skip') // change this string to ensure a new version deployed
+  res.send('commit with #skip') // change this string to ensure a new version deployed
 })
 
 app.listen(PORT, () => {
