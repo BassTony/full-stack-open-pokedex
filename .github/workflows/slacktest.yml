@@ -26,6 +26,7 @@ jobs:
         run: npm run test
       - name: testing id's
         run: echo "lint outcome ${{ steps.lint.outcome }} test outcome ${{ steps.test.outcome }} "
+        if: always()
       # - uses: 8398a7/action-slack@v3
       #   with:
       #     status: ${{ job.status }}
