@@ -24,15 +24,16 @@ jobs:
         run: npm run build
       - id: test
         run: npm run test
+        continue-on-error: true
       - name: testing id's
         run: echo "lint outcome${{':'}} ${{ steps.lint.outcome }} test outcome${{':'}} ${{ steps.test.outcome }} job status${{':'}} ${{ job.status }}"
         if: always()
       - name: report when build fails
-        run: echo "BUILD FAILED"
-        if: always() && job.status == 'failure'
-      - name: report when test succeeds
-        run: echo "TEST SUCCESS"
-        if: ${{ steps.test.outcome == 'success'}}
+        run: echo "BUILD FAILED or test succeeded!"
+        if: always() && (job.status == 'failure' || steps.test.outcome == 'success')
+      # - name: report when test succeeds
+      #   run: echo "TEST SUCCESS"
+      #   if: ${{ steps.test.outcome == 'success'}}
       # - uses: 8398a7/action-slack@v3
       #   with:
       #     status: ${{ job.status }}
