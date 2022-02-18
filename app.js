@@ -12,7 +12,7 @@ app.get('/health', (req, res) => {
 })
 
 app.get('/version', (req, res) => {
-  res.send('testing slack notifications #1: no deploy, no notification #skip') // change this string to ensure a new version deployed
+  res.send('testing slack notifications #2: deploy to heroku, make notification') // change this string to ensure a new version deployed
 })
 
 app.listen(PORT, () => {
