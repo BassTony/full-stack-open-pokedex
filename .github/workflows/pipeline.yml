@@ -66,10 +66,10 @@ jobs:
             {
               attachments: [{
                 color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                text: `a new version deployed to <a href="https://pokedex-fullstack-open.herokuapp.com">https://pokedex-fullstack-open.herokuapp.com</a> (${process.env.AS_COMMIT}) @${process.env.AS_REF} by ${process.env.AS_AUTHOR} ${{ job.status }} in ${process.env.AS_TOOK}`,
+                text: `a new version deployed to https://pokedex-fullstack-open.herokuapp.com">https://pokedex-fullstack-open.herokuapp.com (${process.env.AS_COMMIT}) @${process.env.AS_REF} by ${process.env.AS_AUTHOR} ${{ job.status }} in ${process.env.AS_TOOK}`,
               }]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: always() && steps.heroku_deploy.outcome == 'success'
+        if: steps.heroku_deploy.outcome == 'success'
 
