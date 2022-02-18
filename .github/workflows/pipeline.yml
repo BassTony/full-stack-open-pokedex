@@ -71,5 +71,5 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: always() && steps.heroku_deploy.outcome == 'success'
+        if: steps.heroku_deploy.outcome == 'success'
 
