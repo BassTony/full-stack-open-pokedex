@@ -48,11 +48,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
-      - uses: 8398a7/action-slack@v3
-      - name: slack-notification
-        with:
-          status: ${{ job.status }}
-          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took,pullRequest # selectable (default: repo,message)
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-          if: ${{ steps.heroku_deploy.outcome == 'success' || job.status == 'failure' }} # always() # Pick up events even if the job fails or is canceled.
