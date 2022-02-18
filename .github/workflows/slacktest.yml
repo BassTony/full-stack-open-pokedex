@@ -24,10 +24,13 @@ jobs:
         run: npm run build
       - id: test
         run: npm run test
-      - uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          fields: repo,message,job,took,eventName #commit,action,eventName,ref,workflow,job,took,pullRequest # selectable (default: repo,message)
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: always() # Pick up events even if the job fails or is canceled.
+      - name: testing id's
+        run: echo "lint outcome: ${{ steps.lint.outcome }} "
+        run: echo "test outcome: ${{ steps.test.outcome }} "
+      # - uses: 8398a7/action-slack@v3
+      #   with:
+      #     status: ${{ job.status }}
+      #     fields: repo,message,job,took,eventName #commit,action,eventName,ref,workflow,job,took,pullRequest # selectable (default: repo,message)
+      #   env:
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+      #   if: ${{ steps.lint.outcome == 'success' }} # always() # Pick up events even if the job fails or is canceled.
