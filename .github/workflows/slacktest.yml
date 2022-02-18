@@ -27,9 +27,12 @@ jobs:
       - name: testing id's
         run: echo "lint outcome${{':'}} ${{ steps.lint.outcome }} test outcome${{':'}} ${{ steps.test.outcome }} job status${{':'}} ${{ job.status }}"
         if: always()
-      # - name: report when build fails
-      #   run: echo "BUILD FAILED"
-      #   if: ${{ job.status == 'failed'}}
+      - name: report when build fails
+        run: echo "BUILD FAILED"
+        if: ${{ job.status == 'failed'}}
+      - name: report when test succeeds
+        run: echo "TEST SUCCESS"
+        if: ${{ steps.test.outcome == 'success'}}
       # - uses: 8398a7/action-slack@v3
       #   with:
       #     status: ${{ job.status }}
