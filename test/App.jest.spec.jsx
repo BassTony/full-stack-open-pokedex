@@ -38,8 +38,4 @@ describe('<App />', () => {
     })
     expect(screen.getByTestId('error')).toBeVisible()
   })
-
-  it('error anyways', async () => {
-    expect(1).toBe(2)
-  })
 })
