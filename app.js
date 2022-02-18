@@ -12,7 +12,7 @@ app.get('/health', (req, res) => {
 })
 
 app.get('/version', (req, res) => {
-  res.send('commit without #skip and deploy!') // change this string to ensure a new version deployed
+  res.send("commit without #skip and deploy!") // change this string to ensure a new version deployed
 })
 
 app.listen(PORT, () => {
