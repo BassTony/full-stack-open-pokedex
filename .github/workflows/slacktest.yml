@@ -25,8 +25,7 @@ jobs:
       - id: test
         run: npm run test
       - name: testing id's
-        run: echo "lint outcome ${{ steps.lint.outcome }} "
-        run: echo "test outcome ${{ steps.test.outcome }} "
+        run: echo "lint outcome ${{ steps.lint.outcome }} test outcome ${{ steps.test.outcome }} "
       # - uses: 8398a7/action-slack@v3
       #   with:
       #     status: ${{ job.status }}
