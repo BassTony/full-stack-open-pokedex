@@ -25,8 +25,11 @@ jobs:
       - id: test
         run: npm run test
       - name: testing id's
-        run: echo "lint outcome ${{ steps.lint.outcome }} test outcome ${{ steps.test.outcome }} "
+        run: echo "lint outcome${{':'}} ${{ steps.lint.outcome }} test outcome${{':'}} ${{ steps.test.outcome }} job status${{':'}} ${{ job.status }}"
         if: always()
+      # - name: report when build fails
+      #   run: echo "BUILD FAILED"
+      #   if: ${{ job.status == 'failed'}}
       # - uses: 8398a7/action-slack@v3
       #   with:
       #     status: ${{ job.status }}
