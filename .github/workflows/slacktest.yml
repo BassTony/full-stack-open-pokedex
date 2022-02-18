@@ -18,6 +18,7 @@ jobs:
           node-version: '12.x'
       - name: npm install
         run: npm install
+        outpu
       - id: lint
         run: npm run eslint
       - name: build
@@ -29,9 +30,7 @@ jobs:
         if: always()
       - name: report when build fails
         run: echo "BUILD FAILED"
-        if: |
-          always() && 
-          job.status == 'failed'
+        if: always() && job.status == 'failure')
       - name: report when test succeeds
         run: echo "TEST SUCCESS"
         if: ${{ steps.test.outcome == 'success'}}
