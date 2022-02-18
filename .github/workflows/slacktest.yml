@@ -29,8 +29,7 @@ jobs:
         if: always()
       - name: report when build fails
         run: echo "BUILD FAILED"
-        if: always()
-        - if: ${{ job.status == 'failed'}}
+        if: ${{ always() && job.status == 'failed'}}
       - name: report when test succeeds
         run: echo "TEST SUCCESS"
         if: ${{ steps.test.outcome == 'success'}}
